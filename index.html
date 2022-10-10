@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width initial-scale=1"/>
+    <link rel="stylesheet" href="style.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+<header>
+    <h1> Weather Dashboard </h1>
+</header>
+
+<section>
+    <div class="search-container">
+    <input class="city-input" name="" id="city-search" placeholder="Atlanta">
+    <button onclick="triggerSearch(event)" class="search-btn" type="submit"> Search</button>
+    </div>
+
+    <div class="city-searches">
+    <button class="city-btn"> Atlanta </button>
+    <button class="city-btn"> Austin </button>
+    <button class="city-btn"> Charolette </button>
+    <button class="city-btn"> Chicago </button>
+    <button class="city-btn"> Hoboken </button>
+    <button class="city-btn"> Miami </button>
+    <button class="city-btn"> Nassau </button>
+    <button class="city-btn"> New York </button>
+    <button class="city-btn"> Savannah </button>
+    <button class="city-btn"> Seattle </button>
+    </div>
+</section>
+
+<section class="selected-city-info">
+    <h2 class="selected-city" id="selected-city"> 
+    City Name
+    </h2>
+    <h3 class="todays-date" id="todays-date"> 
+    Today's Date
+    </h3>
+    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="weather-icon">
+</section>
+
+
+<section class="selected-city-weather">
+
+<div class="card-column" id="day-0" data-universal="0">
+    <p>TEMPERATURE</p>
+    <div class="current-temp" id="temp-0" data-universal="0">TEMP</div>
+</div>
+
+<div class="card-column" id="day-0">
+    <p>WIND</p>
+    <div class="current-wind" id="wind-0" data-universal="0">WIND</div>
+</div>
+
+<div class="card-column" id="day-0">
+    <p>HUMIDITY</p>
+    <div class="current-humid" id="humid-0" data-universal="0">HUMID</div>
+</div>
+
+</section>
+
+<section class="forecast">
+<div class="card-column">
+<h2 class="forecast-header">5 Day Forecast</h2>
+</div>
+<div class="card-column forecast-card" id="day-1" data-universal="1">
+    <div class="card-date date-1" id="date-1" data-universal="1">DATE</div>
+    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="weather-icon">
+    <p>TEMPERATURE:</p>
+    <div class="card-temp" id="temp-1" data-universal="1">TEMP</div>
+    <p>WIND:</p>
+    <div class="card-wind" id="wind-1" data-universal="1">WIND</div>
+    <p>HUMIDITY:</p>
+    <div class="card-humid" id="humid-1" data-universal="1">HUMID</div>
+</div>
+
+<div class="card-column forecast-card" id="day-2" data-universal="2">
+    <div class="card-date" id="date-2" data-universal="2">DATE</div>
+    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="weather-icon">
+    <p>TEMPERATURE:</p>
+    <div class="card-temp" id="temp-2" data-universal="2">TEMP</div>
+    <p>WIND:</p>
+    <div class="card-wind" id="wind-2" data-universal="2">WIND</div>
+    <p>HUMIDITY:</p>
+    <div class="card-humid" id="humid-2" data-universal="2">HUMID</div>
+</div>
+
+<div class="card-column forecast-card" id="day-3" data-universal="3">
+    <div class="card-date" id="date-3" data-universal="3">DATE</div>
+    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="weather-icon">
+    <p>TEMPERATURE:</p>
+    <div class="card-temp" id="temp-3" data-universal="3">TEMP</div>
+    <p>WIND:</p>
+    <div class="card-wind" id="wind-3" data-universal="3">WIND</div>
+    <p>HUMIDITY:</p>
+    <div class="card-humid" id="humid-3" data-universal="3">HUMID</div>
+</div>
+
+<div class="card-column forecast-card" id="day-4" data-universal="4">
+    <div class="card-date" id="date-4" data-universal="4">DATE</div>
+    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="weather-icon">
+    <p>TEMPERATURE:</p>
+    <div class="card-temp" id="temp-4" data-universal="4">TEMP</div>
+    <p>WIND:</p>
+    <div class="card-wind" id="wind-4" data-universal="4">WIND</div>
+    <p>HUMIDITY:</p>
+    <div class="card-humid" id="humid-4" data-universal="4">HUMID</div>
+</div>
+
+<div class="card-column forecast-card" id="day-5">
+    <div class="card-date" id="date-5" data-universal="5">DATE</div>
+    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="weather-icon">
+    <p>TEMPERATURE:</p>
+    <div class="card-temp" id="temp-5" data-universal="5">TEMP</div>
+    <p>WIND:</p>
+    <div class="card-wind" id="wind-5" data-universal="5">WIND</div>
+    <p>HUMIDITY:</p>
+    <div class="card-humid" id="humid-5" data-universal="5">HUMID</div>
+</div>
+
+</section>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
