@@ -30,6 +30,13 @@ header {
     text-align: center;
 }
 
+.state-input {
+    margin-left: .5rem;
+    border-radius: 1rem;
+    width: 5rem;
+    text-align: center;
+}
+
 .search-btn {
     background: #364366;
     color: #fff;
@@ -82,6 +89,19 @@ header {
     padding: 4rem;
     width: 100%;
     align-items: center;
+    text-transform: uppercase;
+    
+}
+
+.todays-info {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    width: 100%;
+    align-items: center;
+    text-transform: uppercase;
     
 }
 
