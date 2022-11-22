@@ -42,6 +42,7 @@ todayPlus5El.innerText = todayPlus5;
 
 var selectedCity = document.getElementById('selected-city');
 var selectedState = document.getElementById('selected-state');
+var citySearchBtn = document.getElementById('city-searches');
 
 
 todaytempEL = document.getElementById('temp-0');
@@ -74,8 +75,8 @@ dayfivewindEL = document.getElementById('wind-5');
 dayfivehumidEL = document.getElementById('humid-5');
 dayfiveiconEL = document.getElementById('day-5-icon');
 
-var weathericonURL = 'http://openweathermap.org/img/wn/'
 
+var searchHistoryJSON = JSON.parse(localStorage.getItem('citystateCombo'))|| [];
 
 var triggerSearch = function (event) {
     var city = citySearch.value;
@@ -89,26 +90,23 @@ var triggerSearch = function (event) {
 
     selectedCity.innerText = searchcombo;
 
-    localStorage.setItem(city, 'citySearchHistory');
-    localStorage.setItem(state, 'stateSearchHistory');
-    localStorage.setItem(searchcombo, 'citystateCombo')
+    // var searchHistory = localStorage.getItem('citystateCombo') || []
+    // var searchHistoryJSON = JSON.parse(searchHistory);
+    // searchHistoryJSON.push(searchcombo);
 
-    // .then((searchHistory) => {
+    // var newsearchHistory = JSON.stringify(searchHistoryJSON);
+    // // localStorage.setItem('citySearchHistory', city);
+    // // localStorage.setItem('stateSearchHistory', state);
+
+    // localStorage.setItem('citystateCombo', newsearchHistory);
+
+    var searchHistory = localStorage.getItem('citystateCombo')
+    if (searchHistory) {
+            searchHistoryJSON = JSON.parse(searchHistory);
+    }
+    searchHistoryJSON.push(searchcombo)
     
-    // if (searchHistory.items.length === 0){
-    //         return
-    //     }
-
-    // for (var i = 0; i < searchHistory.items.length; i++) {
-    // let searchHistoryEL = document.createElement('button');
-    //     searchHistoryEL.classList = 'city-btn';
-    //     searchHistoryEL.setAttribute('data-universal', searchcombo);
-    //     searchHistoryEL.setAttribute('onclick', 'triggerHistoricSearch(event);')
-
-    // console.log(searchHistory)
-
-    // }});
-
+    localStorage.setItem('citystateCombo', JSON.stringify(searchHistoryJSON))
 
     event.preventDefault();
 
@@ -138,7 +136,7 @@ var triggerSearch = function (event) {
         todayhumidEL.innerText = todayhumid;
     
         var todayicon = weatherdata.list[0].weather[0].icon;
-        todayiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        todayiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${todayicon}.png`);
 
         console.log(todaytemp, todaywind, todayhumid, todayicon)
 
@@ -154,7 +152,7 @@ var triggerSearch = function (event) {
 
 
         var dayoneicon = weatherdata.list[6].weather[0].icon;
-        dayoneiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        dayoneiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayoneicon}.png`);
 
         console.log(dayonetemp, dayonewind, dayonehumid, dayoneicon)
 
@@ -169,7 +167,7 @@ var triggerSearch = function (event) {
         daytwohumidEL.innerText = daytwohumid;
 
         var daytwoicon = weatherdata.list[14].weather[0].icon;
-        daytwoiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        daytwoiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${daytwoicon}.png`);
         
         console.log(daytwotemp, daytwowind, daytwohumid, daytwoicon)
 
@@ -184,7 +182,7 @@ var triggerSearch = function (event) {
         daythreehumidEL.innerText = daythreehumid;
 
         var daythreeicon = weatherdata.list[22].weather[0].icon;
-        daythreeiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        daythreeiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${daythreeicon}.png`);
 
         console.log(daythreetemp, daythreewind, daythreehumid, daythreeicon)
 
@@ -199,7 +197,7 @@ var triggerSearch = function (event) {
         dayfourhumidEL.innerText = dayfourhumid;
 
         var dayfouricon = weatherdata.list[30].weather[0].icon;
-        dayfouriconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        dayfouriconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayfouricon}.png`);
         
 
         console.log(dayfourtemp, dayfourwind, dayfourhumid, dayfouricon)
@@ -215,13 +213,41 @@ var triggerSearch = function (event) {
         dayfivehumidEL.innerText = dayfivehumid;
 
         var dayfiveicon = weatherdata.list[38].weather[0].icon;
-        dayfiveiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        dayfiveiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayfiveicon}.png`);
 
         console.log(dayfivetemp, dayfivewind, dayfivehumid, dayfiveicon)
 
     })
 
     })
+};
+
+var createSearchBtn = function () {
+    console.log(searchHistoryJSON)
+
+    if (searchHistoryJSON.length === 0) {
+        return
+
+    }
+
+    for (var i = 0; i < searchHistoryJSON.length; i++) {
+    let searchHistoryEL = document.createElement('button');
+        searchHistoryEL.classList = 'city-btn';
+        searchHistoryEL.setAttribute('data-universal', searchHistoryJSON[i]);
+        searchHistoryEL.setAttribute('onclick', 'triggerHistoricSearch(event);');
+        searchHistoryEL.innerText = searchHistoryJSON[i];
+        citySearchBtn.appendChild(searchHistoryEL);
+
+        console.log(searchHistoryJSON[i])
+    }
+}
+
+
+
+window.onload = function() {
+
+createSearchBtn();
+
 };
 
 
@@ -261,7 +287,7 @@ var triggerHistoricSearch = function (event) {
         todayhumidEL.innerText = todayhumid;
     
         var todayicon = weatherdata.list[0].weather[0].icon;
-        todayiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        todayiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${todayicon}.png`);
 
         console.log(todaytemp, todaywind, todayhumid, todayicon)
 
@@ -277,7 +303,7 @@ var triggerHistoricSearch = function (event) {
 
 
         var dayoneicon = weatherdata.list[6].weather[0].icon;
-        dayoneiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        dayoneiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayoneicon}.png`);
 
         console.log(dayonetemp, dayonewind, dayonehumid, dayoneicon)
 
@@ -292,7 +318,7 @@ var triggerHistoricSearch = function (event) {
         daytwohumidEL.innerText = daytwohumid;
 
         var daytwoicon = weatherdata.list[14].weather[0].icon;
-        daytwoiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        daytwoiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${daytwoicon}.png`);
         
         console.log(daytwotemp, daytwowind, daytwohumid, daytwoicon)
 
@@ -307,7 +333,7 @@ var triggerHistoricSearch = function (event) {
         daythreehumidEL.innerText = daythreehumid;
 
         var daythreeicon = weatherdata.list[22].weather[0].icon;
-        daythreeiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        daythreeiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${daythreeicon}.png`);
 
         console.log(daythreetemp, daythreewind, daythreehumid, daythreeicon)
 
@@ -322,7 +348,7 @@ var triggerHistoricSearch = function (event) {
         dayfourhumidEL.innerText = dayfourhumid;
 
         var dayfouricon = weatherdata.list[30].weather[0].icon;
-        dayfouriconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        dayfouriconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayfouricon}.png`);
         
 
         console.log(dayfourtemp, dayfourwind, dayfourhumid, dayfouricon)
@@ -338,7 +364,7 @@ var triggerHistoricSearch = function (event) {
         dayfivehumidEL.innerText = dayfivehumid;
 
         var dayfiveicon = weatherdata.list[38].weather[0].icon;
-        dayfiveiconEL.setAttribute('src', weathericonURL + todayicon + '.png');
+        dayfiveiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayfiveicon}.png`);
 
         console.log(dayfivetemp, dayfivewind, dayfivehumid, dayfiveicon)
 
@@ -346,4 +372,4 @@ var triggerHistoricSearch = function (event) {
 
     })
 };
-
+// }
