@@ -110,7 +110,7 @@ var triggerSearch = function (event) {
 
     event.preventDefault();
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=${API_KEY}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((latlongdata) => {
     console.log(latlongdata)
@@ -120,7 +120,7 @@ var triggerSearch = function (event) {
 
         console.log(lat, long)
 
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${API_KEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((weatherdata) => {
     console.log(weatherdata)
@@ -136,7 +136,7 @@ var triggerSearch = function (event) {
         todayhumidEL.innerText = todayhumid;
     
         var todayicon = weatherdata.list[0].weather[0].icon;
-        todayiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${todayicon}.png`);
+        todayiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${todayicon}.png`);
 
         console.log(todaytemp, todaywind, todayhumid, todayicon)
 
@@ -152,7 +152,7 @@ var triggerSearch = function (event) {
 
 
         var dayoneicon = weatherdata.list[6].weather[0].icon;
-        dayoneiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayoneicon}.png`);
+        dayoneiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${dayoneicon}.png`);
 
         console.log(dayonetemp, dayonewind, dayonehumid, dayoneicon)
 
@@ -167,7 +167,7 @@ var triggerSearch = function (event) {
         daytwohumidEL.innerText = daytwohumid;
 
         var daytwoicon = weatherdata.list[14].weather[0].icon;
-        daytwoiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${daytwoicon}.png`);
+        daytwoiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${daytwoicon}.png`);
         
         console.log(daytwotemp, daytwowind, daytwohumid, daytwoicon)
 
@@ -182,7 +182,7 @@ var triggerSearch = function (event) {
         daythreehumidEL.innerText = daythreehumid;
 
         var daythreeicon = weatherdata.list[22].weather[0].icon;
-        daythreeiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${daythreeicon}.png`);
+        daythreeiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${daythreeicon}.png`);
 
         console.log(daythreetemp, daythreewind, daythreehumid, daythreeicon)
 
@@ -197,7 +197,7 @@ var triggerSearch = function (event) {
         dayfourhumidEL.innerText = dayfourhumid;
 
         var dayfouricon = weatherdata.list[30].weather[0].icon;
-        dayfouriconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayfouricon}.png`);
+        dayfouriconEL.setAttribute('src', `https://openweathermap.org/img/wn/${dayfouricon}.png`);
         
 
         console.log(dayfourtemp, dayfourwind, dayfourhumid, dayfouricon)
@@ -213,7 +213,7 @@ var triggerSearch = function (event) {
         dayfivehumidEL.innerText = dayfivehumid;
 
         var dayfiveicon = weatherdata.list[38].weather[0].icon;
-        dayfiveiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayfiveicon}.png`);
+        dayfiveiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${dayfiveicon}.png`);
 
         console.log(dayfivetemp, dayfivewind, dayfivehumid, dayfiveicon)
 
@@ -261,7 +261,7 @@ var triggerHistoricSearch = function (event) {
 
     event.preventDefault();
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityData},US&limit=1&appid=${API_KEY}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityData},US&limit=1&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((latlongdata) => {
     console.log(latlongdata)
@@ -271,7 +271,7 @@ var triggerHistoricSearch = function (event) {
 
         console.log(lat, long)
 
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${API_KEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((weatherdata) => {
     console.log(weatherdata)
@@ -287,7 +287,7 @@ var triggerHistoricSearch = function (event) {
         todayhumidEL.innerText = todayhumid;
     
         var todayicon = weatherdata.list[0].weather[0].icon;
-        todayiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${todayicon}.png`);
+        todayiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${todayicon}.png`);
 
         console.log(todaytemp, todaywind, todayhumid, todayicon)
 
@@ -303,7 +303,7 @@ var triggerHistoricSearch = function (event) {
 
 
         var dayoneicon = weatherdata.list[6].weather[0].icon;
-        dayoneiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayoneicon}.png`);
+        dayoneiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${dayoneicon}.png`);
 
         console.log(dayonetemp, dayonewind, dayonehumid, dayoneicon)
 
@@ -318,7 +318,7 @@ var triggerHistoricSearch = function (event) {
         daytwohumidEL.innerText = daytwohumid;
 
         var daytwoicon = weatherdata.list[14].weather[0].icon;
-        daytwoiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${daytwoicon}.png`);
+        daytwoiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${daytwoicon}.png`);
         
         console.log(daytwotemp, daytwowind, daytwohumid, daytwoicon)
 
@@ -333,7 +333,7 @@ var triggerHistoricSearch = function (event) {
         daythreehumidEL.innerText = daythreehumid;
 
         var daythreeicon = weatherdata.list[22].weather[0].icon;
-        daythreeiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${daythreeicon}.png`);
+        daythreeiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${daythreeicon}.png`);
 
         console.log(daythreetemp, daythreewind, daythreehumid, daythreeicon)
 
@@ -348,7 +348,7 @@ var triggerHistoricSearch = function (event) {
         dayfourhumidEL.innerText = dayfourhumid;
 
         var dayfouricon = weatherdata.list[30].weather[0].icon;
-        dayfouriconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayfouricon}.png`);
+        dayfouriconEL.setAttribute('src', `https://openweathermap.org/img/wn/${dayfouricon}.png`);
         
 
         console.log(dayfourtemp, dayfourwind, dayfourhumid, dayfouricon)
@@ -364,7 +364,7 @@ var triggerHistoricSearch = function (event) {
         dayfivehumidEL.innerText = dayfivehumid;
 
         var dayfiveicon = weatherdata.list[38].weather[0].icon;
-        dayfiveiconEL.setAttribute('src', `http://openweathermap.org/img/wn/${dayfiveicon}.png`);
+        dayfiveiconEL.setAttribute('src', `https://openweathermap.org/img/wn/${dayfiveicon}.png`);
 
         console.log(dayfivetemp, dayfivewind, dayfivehumid, dayfiveicon)
 
