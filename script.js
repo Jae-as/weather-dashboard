@@ -78,7 +78,6 @@ dayfiveiconEL = document.getElementById('day-5-icon');
 
 var searchHistoryJSON = JSON.parse(localStorage.getItem('citystateCombo'))|| [];
 
-
 var triggerSearch = function (event) {
     var city = citySearch.value;
     console.log(city)
