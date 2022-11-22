@@ -89,9 +89,15 @@ var triggerSearch = function (event) {
 
     selectedCity.innerText = searchcombo;
 
-    localStorage.setItem(city, 'citySearchHistory');
-    localStorage.setItem(state, 'stateSearchHistory');
-    localStorage.setItem(searchcombo, 'citystateCombo')
+    var searchHistory = localStorage.getItem('citystateCombo') || []
+    var searchHistoryJSON = JSON.parse(searchHistory);
+    searchHistoryJSON.push(searchcombo);
+
+    var newsearchHistory = JSON.stringify(searchHistoryJSON);
+    // localStorage.setItem('citySearchHistory', city);
+    // localStorage.setItem('stateSearchHistory', state);
+
+    localStorage.setItem('citystateCombo', newsearchHistory);
 
     // .then((searchHistory) => {
     
@@ -346,4 +352,4 @@ var triggerHistoricSearch = function (event) {
 
     })
 };
-
+// }
